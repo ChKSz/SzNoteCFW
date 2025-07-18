@@ -1,0 +1,17 @@
+name = "sznote"
+workers_dev = true
+main = "workers-site/index.js"
+compatibility_date = "2024-07-18"
+
+[site]
+bucket = "./public"
+
+[env.production]
+vars = { ENVIRONMENT = "production" }
+
+[[kv_namespaces]]
+binding = "SZNOTE_NOTES"
+id = "4d0818ff072f460e8dd51e316ce99cb5" # 请替换为你的CloudFlare KV命名空间ID
+
+[triggers]
+crons = ["0 0 * * *"] # 每天执行一次清理过期笔记
